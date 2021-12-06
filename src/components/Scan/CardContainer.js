@@ -4,15 +4,16 @@ import { QRCodeCard } from "./QRCodeCard";
 export function CardContainer() {
 
     return (
-    <Box display= 'flex'
-            p={3}
-            sx={{ maxWidth: 'md' }} 
-            margin='auto'
+    <Box p={3}
+        sx={{ maxWidth: 'md' }} 
+        margin='auto'
     >
         <Paper>
             <Grid container
                     spacing={3}
-                    sx={{ mt: 1, mb: 1 }}
+                    sx={{ mt: 1, mb: 1}}
+                    alignItems="center"
+                    
             >
                 <Grid item  xs={12}>
                     <QRCodeCard />
@@ -31,7 +32,7 @@ export function CardContainer() {
                     </Typography>
                 </Grid>
 
-                <Grid item  xs={12}>
+                <Grid item xs={12} margin='auto'>
                     <Button
                         fullWidth
                     >

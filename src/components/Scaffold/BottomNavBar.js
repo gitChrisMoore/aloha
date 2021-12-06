@@ -13,7 +13,7 @@ export function BottomNavBar() {
   const [value, setValue] = useState(0);
 
   return (
-    <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
+    <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={5}>
       <BottomNavigation
         showLabels
         value={value}
