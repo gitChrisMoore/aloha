@@ -1,7 +1,23 @@
 import { Paper, Box, Grid, Divider, Typography, Button } from "@mui/material";
 import { QRCodeCard } from "./QRCodeCard";
 
+import { Balances } from "../../providers/Balances"
+import { useEffect, useState } from "react";
+
 export function CardContainer() {
+    const { getCurrentBalanceByUserID } = Balances()
+    const [ currentBalance, SetCurrentBalance ] = useState()
+    
+    async function handleBalanceUpdate() {
+        const txs = await getCurrentBalanceByUserID();
+        SetCurrentBalance(txs)
+        console.log(currentBalance);
+    }
+
+    useEffect(() => {
+        handleBalanceUpdate()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
     <Box p={3}
@@ -25,10 +41,7 @@ export function CardContainer() {
 
                 <Grid item xs={12}>
                     <Typography variant="h4" align='center'>
-                        $2,000
-                    </Typography>
-                    <Typography variant="subtitle2" align='center'>
-                        As of, XXXX Date
+                        {`$${Number(currentBalance?.current_balance).toFixed(2)}`}
                     </Typography>
                 </Grid>
 

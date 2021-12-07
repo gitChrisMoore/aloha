@@ -17,7 +17,8 @@ export function Login() {
 
     async function handleSignIn() {
         // e.preventDefault()
-        const email = 'tmpTx@gmail.com'
+        // const email = 'tmpTx@gmail.com'
+        const email = 'chrisdmoore06@gmail.com'
         const password = 'abcd1234'
         // console.log(un)
         const { error } = await signIn({ email, password })
