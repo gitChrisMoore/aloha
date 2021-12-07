@@ -4,11 +4,16 @@ import { Balances } from "../../providers/Balances"
 
 export function CurrentBalance() {
     const { getCurrentBalanceByUserID } = Balances()
-    const [ currentBalance, SetCurrentBalance ] = useState(0.00)
+    const [ currentBalance, SetCurrentBalance ] = useState(parseFloat(0))
     
     async function handleBalanceUpdate() {
         const txs = await getCurrentBalanceByUserID();
-        SetCurrentBalance(txs)
+        if(txs) SetCurrentBalance(txs.current_balance)
+        else {
+            console.log("No current balance")
+            SetCurrentBalance(parseFloat(0))
+        }
+        
         // console.log(currentBalance);
     };
 
@@ -20,7 +25,7 @@ export function CurrentBalance() {
     
     return (
         <>
-            {`$${Number(currentBalance.current_balance).toFixed(2)}`}
+            {`$${Number(currentBalance).toFixed(2)}`}
         </>
     )
 }

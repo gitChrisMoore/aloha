@@ -6,14 +6,13 @@ import {TextField,
         Container,
         Typography,
         Button,
-        Grid,
         Box} from "@mui/material/";
 
 
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-export function Login() {
-    const { signIn } = useAuth()
+export function Signup() {
+    const { signUp } = useAuth()
     const emailRef = useRef()
     const passwordRef = useRef()
     const navigate = useNavigate()
@@ -23,11 +22,10 @@ export function Login() {
 
         const email = emailRef.current.value
         const password = passwordRef.current.value
-        console.log('email, ', email)
-        console.log('password, ', password)
-        const { error } = await signIn({ email, password })
+        
+        const { error } = await signUp({ email, password })
         if (error) {
-            alert('error signing in')
+            alert('error in creating account')
         } else {
             console.log('success')
             navigate('/scan')
@@ -47,7 +45,7 @@ export function Login() {
             >
                 <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
                     <Typography variant="h5">
-                        Log in
+                        Sign Up
                     </Typography>
                     <TextField
                         inputRef={emailRef}
@@ -57,13 +55,13 @@ export function Login() {
                         label="Email Address"
                         autoFocus
                         id="input-email"
+                        autoComplete="email"
                     />
                     <TextField
                         inputRef={passwordRef}
                         margin="normal"
                         required
                         fullWidth
-                        name="password"
                         label="Password"
                         type="password"
                         id="input-password"
@@ -76,17 +74,9 @@ export function Login() {
                         variant="contained"
                         sx={{ mt: 2, mb: 2 }}
                         >
-                        Sign In
+                        Create Account
                     </Button>
 
-                    <Grid container>
-                        <Grid item xs>
-                            <Link to="/signup">Forgot Password</Link>
-                        </Grid>
-                        <Grid item>
-                            <Link to="/signup">Sign Up</Link>
-                        </Grid>
-                    </Grid>
                 </Box>
 
 
