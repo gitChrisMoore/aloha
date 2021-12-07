@@ -12,6 +12,8 @@ import { AuthProvider } from "../contexts/Auth"
 import { RemoteEventProvider } from "../contexts/RemoteEventProvider"
 import { TransactionApproval } from "./Notification/TransactionApproval";
 
+import { PrivateRoute } from "./Routes/PrivateRoute"
+
 function App() {
   return (
     <div className="App">
@@ -23,11 +25,17 @@ function App() {
                 <TopAppBar />
                 
                 <Routes>
-                  <Route path='/scan' element={<ScanContainer/>} />
-                  <Route path='/balance' element={<BalanceContainer/>} />
-                  <Route path='/profile' element={<ProfileContainer/>} />
+                  {/* Private Routes */}
+                  <Route path='/' element={<PrivateRoute/>}>
+                      <Route path='/scan' element={<ScanContainer/>} />                  
+                      <Route path='/balance' element={<BalanceContainer/>} />
+                      <Route path='/profile' element={<ProfileContainer/>} />
+                      <Route path='*' element={<ScanContainer/>} />
+                  </Route>
+                  
+                  {/* Public Routes */}
                   <Route path='/login' element={<Login/>} />
-                  <Route path='*' element={<ScanContainer/>} />
+                  
                 </Routes>
 
                 <TransactionApproval />
