@@ -1,40 +1,31 @@
-import { Paper, Box, Grid, Typography, Button } from "@mui/material";
-
+import { Box, Grid, Typography } from "@mui/material";
+import { TransactionsList } from "../Transactions/TransactionsList";
+import { CurrentBalance } from "./CurrentBalance"
 
 export function BalanceContainer() {
-
+    
     return (
-    <Box display= 'flex'
-            p={2}
-            sx={{ maxWidth: 'md' }} 
-            margin='auto'
-    >
-        <Paper>
-            <Grid container
-                    spacing={3}
-                    sx={{ mt: 1, mb: 1 }}
+        <>
+            <Box 
+                sx={{ maxWidth: 'md' }}
+                margin='auto'
             >
-
-                <Grid item xs={12}>
-                    <Typography variant="h4" align='center'>
-                        Balance
-                    </Typography>
-                    <Typography variant="subtitle2" align='center'>
-                        As of, XXXX Date
+                <Grid item  pt={3} pb={1}>
+                    <Typography variant="subtitle1" fontWeight="bold" ml={2}>
+                        Current Balance
                     </Typography>
                 </Grid>
 
-                <Grid item  xs={12}>
-                    <Button
-                        fullWidth
-                    >
-                    Add Funds
-                    </Button>
+                <Grid item>
+                    <Typography variant="h5" align='center'>
+                        <CurrentBalance />
+                    </Typography>
                 </Grid>
 
-            </Grid>
-            
-        </Paper>
-    </Box>
+                <Grid item  pt={3}>
+                    <TransactionsList />
+                </Grid>
+            </Box>
+    </>
     )
 }

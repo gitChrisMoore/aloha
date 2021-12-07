@@ -4,7 +4,7 @@ This project I want to:
 - approve transaction
 
 
-npm i --save-dev @supabase/supabase-js @mui/material @emotion/react @emotion/styled moment react-router-dom @testing-library/react @mui/icons-material
+npm i --save-dev @supabase/supabase-js @mui/material @emotion/react @emotion/styled moment react-router-dom @testing-library/react @mui/icons-material moment
  
 
 npm i --save-dev qrcode.react
