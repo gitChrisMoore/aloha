@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
@@ -11,8 +11,16 @@ import { Paper } from '@mui/material';
 
 export function BottomNavBar() {
   const [value, setValue] = useState(0);
+  const location = useLocation();
+
+  if(location.pathname === '/login') {
+    return <> </>
+  } else if (location.pathname === '/signup') {
+    return <> </>
+  };
 
   return (
+    <>
     <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={5}>
       <BottomNavigation
         showLabels
@@ -26,5 +34,6 @@ export function BottomNavBar() {
         <BottomNavigationAction label="Profile" to="/profile"  component={Link} icon={<PersonIcon />} />
       </BottomNavigation>
     </Paper>
+    </>
   );
 }

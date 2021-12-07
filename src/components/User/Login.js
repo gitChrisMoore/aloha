@@ -1,16 +1,13 @@
-
 import { useRef } from 'react';
 import { useAuth } from '../../contexts/Auth'
-
 import {TextField,
         Container,
         Typography,
         Button,
         Grid,
         Box} from "@mui/material/";
-
-
-import { Link, useNavigate } from 'react-router-dom'
+import {Link,
+        useNavigate } from 'react-router-dom'
 
 export function Login() {
     const { signIn } = useAuth()
@@ -57,6 +54,7 @@ export function Login() {
                         label="Email Address"
                         autoFocus
                         id="input-email"
+                        autoComplete="username"
                     />
                     <TextField
                         inputRef={passwordRef}
@@ -67,7 +65,7 @@ export function Login() {
                         label="Password"
                         type="password"
                         id="input-password"
-                        autoComplete="current-password"
+                        autoComplete="password"
                     />
 
                     <Button

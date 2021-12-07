@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
 import { ScanContainer } from "./Scan/ScanContainer"
 import { BalanceContainer } from "./Balance/BalanceContainer"
 import { ProfileContainer } from "./Profile/ProfileContainer";
@@ -16,17 +15,20 @@ import { TransactionApproval } from "./Notification/TransactionApproval";
 
 import { PrivateRoute } from "./Routes/PrivateRoute"
 
+
+
 function App() {
+
   return (
     <div className="App">
       <Router>
           <AuthProvider>
             <RemoteEventProvider>
-            
-            
+
                 <TopAppBar />
                 
                 <Routes>
+                  
                   {/* Private Routes */}
                   <Route path='/' element={<PrivateRoute/>}>
                       <Route path='/scan' element={<ScanContainer/>} />                  
@@ -44,8 +46,9 @@ function App() {
                 </Routes>
 
                 <TransactionApproval />
+                
                 <BottomNavBar />
-            
+                
             </RemoteEventProvider>
           </AuthProvider>
       </Router>
