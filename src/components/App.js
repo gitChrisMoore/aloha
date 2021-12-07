@@ -1,7 +1,4 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
-import { Dashboard } from "./Dashboard/Dashboard"
-
 import { ScanContainer } from "./Scan/ScanContainer"
 import { BalanceContainer } from "./Balance/BalanceContainer"
 
@@ -26,7 +23,7 @@ function App() {
                   <Route path='/scan' element={<ScanContainer/>} />
                   <Route path='/balance' element={<BalanceContainer/>} />
                   <Route path='/profile' element={<ScanContainer/>} />
-                  <Route path='*' element={<Dashboard/>} />
+                  <Route path='*' element={<ScanContainer/>} />
                 </Routes>
 
                 <TransactionApproval />

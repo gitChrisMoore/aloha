@@ -2,20 +2,27 @@ import { Paper, Box, Grid, Divider, Typography, Button } from "@mui/material";
 import { QRCodeCard } from "./QRCodeCard";
 
 import { Balances } from "../../providers/Balances"
+import { AddFundsFormDialog } from "./AddFundsFormDialog"
 import { useEffect, useState } from "react";
 
 export function CardContainer() {
     const { getCurrentBalanceByUserID } = Balances()
     const [ currentBalance, SetCurrentBalance ] = useState()
+    const [ open, setOpen ] = useState(false)
     
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
     async function handleBalanceUpdate() {
         const txs = await getCurrentBalanceByUserID();
         SetCurrentBalance(txs)
-        console.log(currentBalance);
-    }
+        // console.log(currentBalance);
+    };
 
     useEffect(() => {
         handleBalanceUpdate()
+        // setOpen(false);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -48,6 +55,7 @@ export function CardContainer() {
                 <Grid item xs={12} margin='auto'>
                     <Button
                         fullWidth
+                        onClick={handleClickOpen}
                     >
                     Add Funds
                     </Button>
@@ -56,6 +64,10 @@ export function CardContainer() {
             </Grid>
             
         </Paper>
+        <AddFundsFormDialog 
+            open={open}
+            setOpen={setOpen}
+            />
     </Box>
     )
 }
