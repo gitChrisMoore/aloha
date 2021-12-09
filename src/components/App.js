@@ -38,7 +38,7 @@ function App() {
                   </Route>
                   
                   {/* Public Routes */}
-                  <Route path='*' element={<ScanContainer/>} />
+                  <Route path='*' element={<Login/>} />
                   <Route path='/login' element={<Login/>} />
                   <Route path='/signin' element={<Login/>} />
                   <Route path='/signup' element={<Signup/>} />
