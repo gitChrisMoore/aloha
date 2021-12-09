@@ -34,10 +34,11 @@ function App() {
                       <Route path='/scan' element={<ScanContainer/>} />                  
                       <Route path='/balance' element={<BalanceContainer/>} />
                       <Route path='/profile' element={<ProfileContainer/>} />
-                      <Route path='*' element={<ScanContainer/>} />
+                      
                   </Route>
                   
                   {/* Public Routes */}
+                  <Route path='*' element={<ScanContainer/>} />
                   <Route path='/login' element={<Login/>} />
                   <Route path='/signin' element={<Login/>} />
                   <Route path='/signup' element={<Signup/>} />
