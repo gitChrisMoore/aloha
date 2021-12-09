@@ -30,13 +30,17 @@ export function ProfileContainer() {
                     </Typography>
                 </Grid>
 
+                <Grid item pt={3}>
+                    <Typography variant="subtitle2" fontWeight="bold" ml={2}>
+                        {user.id}
+                    </Typography>
+                </Grid>
+
                 <ListItem onClick={handleSignOut}>
                     <ListItemText primary='Sign Out' />
                 </ListItem>
 
             </Box>
-
-
     </>
     )
 }

@@ -1,10 +1,15 @@
 import { supabase } from '../supabase'
 import {v4 as uuid} from 'uuid'
+import { useAuth } from '../contexts/Auth'
+
 
 
 async function makeTx(oldTransaction, status, transaction_detail) {
-        
+    
+
     let tx = oldTransaction
+
+
 
     if(status === 'PENDING_APPROVAL') {
         tx.transaction_id = uuid();
@@ -51,7 +56,11 @@ async function createTx(tx) {
 
 export const Transactions = () => {
     
+    const { user } = useAuth()
+    
     const createPendingApproval = async (oldTransaction) => {
+
+        oldTransaction.created_by = user.id
 
         const tx = await makeTx(oldTransaction, 'PENDING_APPROVAL');
         if (tx) {

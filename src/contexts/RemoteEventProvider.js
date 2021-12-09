@@ -12,10 +12,15 @@ export const RemoteEventProvider = ({ children }) => {
 
 
     function handleNewMessage(msg) {
-        if(user.id === msg.new.user_id) {
-            setMessage(msg)
+        try {
+            if(user.id === msg.new.user_id) {
+                setMessage(msg)
+                return
+            }
+        } catch (error) {
+            console.log("cannot log user")
+            return
         }
-
     };
 
     async function setupListener() {
@@ -29,6 +34,7 @@ export const RemoteEventProvider = ({ children }) => {
                     .from("subscriptions")
                     .on("INSERT", (res) => {
                         if (error) console.log(error);
+                        // console.log(res)
                         handleNewMessage(res)
                         // console.log(res)
                         //
